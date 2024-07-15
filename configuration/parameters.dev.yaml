@@ -1,0 +1,39 @@
+# These are environment specific overrides that are merged with the base parameters.yaml configuration.
+# You can add environment variables to this file and reference them in the
+# configuration with !ENV ${MY_ENV_VAR}
+
+config:
+  server:
+    host: 127.0.0.1
+    port: 8181
+    reload_on_change: true
+    allowed_origins:
+      - "*"
+    log_level: "TRACE"
+  cashmere:
+    namespace: dev
+    region: us-east-1
+    endpoint: http://localhost:4566
+    aws_account_id: '000000000000'
+    aws_secret_access_key: dev_secret_access_key
+    aws_access_key_id: dev_aws_access_key_id
+  security:
+    api_keys: []
+  apps:
+    auth:
+      database:
+        url: postgresql+asyncpg://dev_user:dev_password@localhost/oly_auth
+      private_key:
+        key: |
+          FILL_ME
+        password: "a_weak_password"
+      public_key:
+        key: |
+          FILL_ME
+      domains:
+        - origin: "http://app.local-admin.fastapi-auth-server.com"
+          cookie_domain: "local-admin.fastapi-auth-server.com"
+          cookie_is_secure: false
+        - origin: "http://app.local-hi.fastapi-auth-server.com"
+          cookie_domain: "local-hi.fastapi-auth-server.com"
+          cookie_is_secure: false

@@ -1,0 +1,30 @@
+# Base environment parameters. These can be overriden with env specific config files.
+# You can add environment variables to this file and reference them in the
+# configuration with !ENV ${MY_ENV_VAR}
+config:
+  server:
+    host: 0.0.0.0
+    port: 8000
+    allowed_origins:
+      - "FILL_ME_WITH_ALLOWED_ORIGIN"
+    log_level: "INFO"
+  cashmere:
+    namespace: base
+    region: FILL_ME
+    endpoint: FILL_ME
+    aws_account_id: FILL_ME
+    aws_secret_access_key: FILL_ME
+    aws_access_key_id: FILL_ME
+  security:
+    authentication:
+      public_key: |
+        FILL
+        ME
+        WITH
+        THE
+        PUBLIC
+        KEY
+    api_keys: []
+  apps:
+    demo:
+      default_hello: "Hello World!"

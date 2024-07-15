@@ -1,0 +1,45 @@
+# base environment parameters. These can be overriden with env specific config files.
+# You can add environment variables to this file and reference them in the
+# configuration with !ENV ${MY_ENV_VAR}
+
+config:
+  server:
+    host: 127.0.0.1
+    port: 8000
+    allowed_origins:
+      - "*"
+  cashmere:
+    namespace: test
+    region: FILL_ME
+    endpoint: FILL_ME
+    aws_account_id: FILL_ME
+    aws_secret_access_key: FILL_ME
+    aws_access_key_id: FILL_ME
+  security:
+    authentication:
+      public_key: |
+        FILL_ME
+    api_keys: []
+  apps:
+    demo:
+      default_hello: "Hello World!"
+    auth:
+      database:
+        url: postgresql+asyncpg://test_user:test_password@localhost/oly_auth_test
+      private_key:
+        key: |
+          FILL_ME
+        password: "a_weak_password"
+      public_key:
+        key: |
+          FILL_ME
+      domains:
+        - origin: "http://test-local-app.fastapi-auth-server.com"
+          cookie_domain: "testserver.local"
+          cookie_is_secure: false
+        - origin: "http://test-app.fastapi-auth-server.com"
+          cookie_domain: "api-test-app.fastapi-auth-server.com"
+          cookie_is_secure: false
+        - origin: "http://test-admin.fastapi-auth-server.com"
+          cookie_domain: "api-test-admin.fastapi-auth-server.com"
+          cookie_is_secure: false
