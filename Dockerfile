@@ -16,6 +16,12 @@ COPY pyproject.toml poetry.lock* /usr/src/app/
 # Copy the project files into the container
 COPY . /usr/src/app/
 
+# Remove the tests directory
+RUN rm -rf /usr/src/app/tests
+
+# Remove all docs
+RUN rm -rf /usr/src/app/docs
+
 # Setup Shmig to run migrations
 RUN cp /usr/src/app/scripts/shmig/shmig /usr/local/bin/shmig \
   && chmod +x /usr/local/bin/shmig
